@@ -5,6 +5,17 @@
     Basic usage: fork this repo, add your own posts, and publish to your site (e.g. heroku, divshot)
 */
 
+hljs.initHighlightingOnLoad(); //TODO modularize
+
+marked.setOptions({
+  sanitize: false,  //warning
+
+  highlight: function (code) {
+    return hljs.highlightAuto(code).value;
+  }
+
+});
+
 $(document).ready(function ()
 {
     var Post = Backbone.Model.extend({
@@ -21,8 +32,10 @@ $(document).ready(function ()
             this.save({
                 completed: !this.get('completed')
             });
+
         }
         */
+
         get_content: function(){
             console.log("downloading post body");
             var that = this;
@@ -36,11 +49,20 @@ $(document).ready(function ()
         }
     });
 
-
     var Posts = Backbone.Collection.extend({
         model: Post,
-        url: "/posts_db.json"
+        url: "/posts_store.json"
     });
+
+    var Author = Backbone.Model.extend({
+
+    });
+
+    var Authors = Backbone.Collection.extend({
+        model: Author,
+        url: "/author_store.json"
+    });
+
 
     var Routes = Backbone.Router.extend({
 
@@ -79,10 +101,10 @@ $(document).ready(function ()
 
         initialize: function(){
             console.log("postview made");
-            this.listenTo(this.model, 'change', this.render);
-            this.listenTo(this.model, 'destroy', this.remove);
-            this.listenTo(this.model, 'visible', this.toggleVisible);
-            this.listenTo(this.model, 'got_body', this.render);
+            this.listenTo(this.model, 'change',     this.render);
+            this.listenTo(this.model, 'destroy',    this.remove);
+            this.listenTo(this.model, 'visible',    this.toggleVisible);
+            this.listenTo(this.model, 'got_body',   this.render);
         },
 
         bodyRender: marked.parse,
@@ -118,6 +140,7 @@ $(document).ready(function ()
 
     var PostsView = Backbone.View.extend({
         el: $("#posts"),
+
         initialize: function(){
             this.collection = new Posts();
             var that = this;
@@ -133,6 +156,7 @@ $(document).ready(function ()
             this.collection.fetch();
             this.render();
         },
+
         render: function(){
             this.$el.empty();
             var that = this;

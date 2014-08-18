@@ -4,10 +4,13 @@
         "date": 1407990486243,
         "title": "test-post",
         "source": "posts/1.md",
-        "author":{
-            "name": "Charles Julian Knight",
-            "email": "charles@rabidaudio.com",
-            "twitter": "@charlesjuliank"
-        }
+        "author": 0
+    },
+    {
+        "id": 1,
+        "date": 1417999986243,
+        "title": "xyz",
+        "source": "posts/2.md",
+        "author": 0
     }
 ]
