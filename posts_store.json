@@ -1,0 +1,13 @@
+[
+    {
+        "id": 0,
+        "date": 1407990486243,
+        "title": "test-post",
+        "source": "posts/1.md",
+        "author":{
+            "name": "Charles Julian Knight",
+            "email": "charles@rabidaudio.com",
+            "twitter": "@charlesjuliank"
+        }
+    }
+]
