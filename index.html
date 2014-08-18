@@ -1,0 +1,32 @@
+<html data-framework="backbonejs">
+<head>
+    <!--<script src="vendor/knockout-3.1.0.js"></script>-->
+    <!-- TODO use bower and html5boilerplate -->
+    <script src="vendor/jquery-1.11.1.js" type="text/javascript"></script>
+    <script src="vendor/underscore.js" type="text/javascript"></script>
+    <script src="vendor/handlebars-v1.3.0.js" type="text/javascript"></script>
+    <script src="vendor/marked.min.js" type="text/javascript"></script>
+    <script src="vendor/backbone.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="base.css">
+</head>
+<body>
+    <div id="templates">
+        <div id="post-template">
+            <h1>{{title}}</h1>
+            <div class="body">
+            </div>
+            <ul>
+                <li>{{author.name}}</li>
+                <li>{{author.email}}</li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div id="backbone-menu"></div>
+        <div id="backbone-content">
+            <div id="posts"></div>
+        </div>
+    </div>
+</body>
+</html>
