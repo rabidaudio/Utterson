@@ -1,3 +1,7 @@
 #templates {
     display: none;
 }
+pre {
+    background-color: lightgrey;
+    padding: 1%;
+}
