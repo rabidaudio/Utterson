@@ -1,0 +1,16 @@
+[
+    {
+        "id": 0,
+        "date": 1407990486243,
+        "title": "test-post",
+        "source": "data/posts/1.md",
+        "author": 0
+    },
+    {
+        "id": 1,
+        "date": 1417999986243,
+        "title": "xyz",
+        "source": "data/posts/2.md",
+        "author": 0
+    }
+]
