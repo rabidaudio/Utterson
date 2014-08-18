@@ -1,0 +1,17 @@
+body {
+    background: #fafafa;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+}
+
+#templates {
+    display: none;
+}
+
+pre {
+    background-color: lightgrey;
+    padding: 1%;
+}
