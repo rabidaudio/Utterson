@@ -14,7 +14,7 @@ require.config({
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
         marked: '../bower_components/marked/lib/marked',
-        highlightjs: '../bower_components/highlightjs/highlight.pack',
+        highlightjs: '../bower_components/highlightjs-amd/highlight.pack',
         handlebars: '../bower_components/handlebars/handlebars.amd'
     }
 });
