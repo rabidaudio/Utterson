@@ -20,8 +20,8 @@
     "smarttabs": true,
     "jquery": true,
     "globals": {
-        "Blog": true,
-        "blog": true,
+        "Utterson": true,
+        "utterson": true,
         "_": false,
         "Backbone": false,
         "JST": false,

@@ -1,11 +1,12 @@
 {
   "generator-backbone": {
-    "appPath": "app",
-    "appName": "Blog",
-    "coffee": false,
+    "appPath": "blog",
+    "appName": "Utterson",
     "testFramework": "mocha",
     "templateFramework": "lodash",
+    "coffee": false,
     "compassBootstrap": true,
     "includeRequireJS": true
-  }
+  },
+  "generator-mocha": {}
 }
