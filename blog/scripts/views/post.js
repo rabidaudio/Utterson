@@ -5,9 +5,10 @@ define([
     'underscore',
     'backbone',
     'marked',
+    'debug',
     'templates',
     'views/author'
-], function ($, _, Backbone, marked, Templates, AuthorView) {
+], function ($, _, Backbone, marked, debug, Templates, AuthorView) {
     'use strict';
 
     var PostView = Backbone.View.extend({
@@ -15,37 +16,43 @@ define([
         events: {},
 
         initialize: function () {
-            this.listenTo(this.model, 'change',     this.render);
+            // this.listenTo(this.model, 'change',     this.render);
             this.listenTo(this.model, 'destroy',    this.remove);
             this.listenTo(this.model, 'visible',    this.toggleVisible);
             this.listenTo(this.model, 'got_body',   this.render);
         },
 
         render: function () {
-            console.log("Rendering: "+this.model.get("id"));
+            var View = this;
+            var id = View.model.get("id");
+            
+            debug('['+id+']: Rendering PostView');
             //build html
-            this.$el.html(this.template(this.model.toJSON()));
+            View.$el.html(View.template(View.model.toJSON()));
             //compile markdown
-            var post_body = this.model.get("content");
+            var post_body = View.model.get("content");
             if(!post_body){
-                var md = this.model.get("markdown");
+                debug('['+id+']: Post body not set');
+                var md = View.model.get("markdown");
                 if( !md ){
-                    this.$el.hide();
-                    return this; //markdown hasn't been fetched yet, so no reason to render
+                    View.$el.hide();
+                    debug('['+id+']: No markdown available');
+                    return View; //markdown hasn't been fetched yet, so no reason to render
                 }
-                post_body = this.bodyRender(md);
-                this.model.set("content", post_body);
+                debug('['+id+']: Rendering markdown');
+                post_body = View.bodyRender(md);
+                View.model.set("content", post_body);
             }
-            this.$(".body").html(post_body);
+            View.$(".body").html(post_body);
             //add author
-            var author = this.model.get("author");
+            var author = View.model.get("author");
             if(author){
+                debug('['+id+']: Adding author');
                 var authorView = new AuthorView({model: author});
-                // authorView.render();
-                this.$(".author").replaceWith( authorView.render().el );
+                View.$(".author").replaceWith( authorView.render().el );
             }
-            this.$el.show();
-            return this;
+            View.$el.show();
+            return View;
         },
 
         bodyRender: marked.parse,

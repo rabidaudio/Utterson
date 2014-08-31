@@ -1,6 +1,9 @@
 /*global require*/
 'use strict';
 
+window.Utterson = window.Utterson || {};
+Utterson.DEV = true; //TODO
+
 require.config({
     shim: {
         bootstrap: {
@@ -27,7 +30,8 @@ require.config({
         highlightjs: '../bower_components/highlightjs/highlight.pack',
         //stupid fucking amd module puts stuff in Handlebars.default which fucks with everything
         // handlebars: '../bower_components/handlebars/handlebars.amd' 
-        handlebars: '../bower_components/handlebars/handlebars'
+        handlebars: '../bower_components/handlebars/handlebars',
+        debug: 'helper/debug'
     }
 });
 
@@ -35,9 +39,10 @@ require([
     'backbone',
     'highlightjs',
     'marked',
+    'debug',
     'views/posts',
     'backbone-relational'
-], function (Backbone, hljs, marked, PostsView) {
+], function (Backbone, hljs, marked, debug, PostsView) {
 
     /*
     Make fancy shell script (probably node) which lets you "publish posts" (add to json index),
@@ -45,7 +50,6 @@ require([
 
     Basic usage: fork this repo, add your own posts, and publish to your site (e.g. heroku, divshot)
 */
-
     //Configuration
     hljs.initHighlightingOnLoad();
 
@@ -55,10 +59,9 @@ require([
       highlight: function (code) {
         return hljs.highlightAuto(code).value;
       }
-
     });
 
     Backbone.history.start();
-    var postsView = new PostsView(); //fetches posts
-    //make new app view
+    var postsView = new PostsView();
+    debug('App start');
 });

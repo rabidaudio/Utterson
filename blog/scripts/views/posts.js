@@ -4,10 +4,11 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'debug',
     'collections/post',
     'views/post',
     'collections/author'
-], function ($, _, Backbone, PostCollection, PostView, AuthorCollection) {
+], function ($, _, Backbone, debug, PostCollection, PostView, AuthorCollection) {
     'use strict';
 
     /*
@@ -21,33 +22,39 @@ define([
 
         events: {},
 
-        el: $("#posts"),
+        el: $('#posts'),
+
+        visiblePosts: [],
 
         initialize: function(){
-            this.collection = new PostCollection();
-            this.authors = new AuthorCollection();
-            this.authors.fetch();
-            var that = this;
-            this.collection.on("sync", function(collection, res, opts){
-                collection.each(function(post){
-                    post.get_content();
-                });
+            debug('Building PostsView');
+            var View = this;
+            View.collection = new PostCollection();
+            View.authors = new AuthorCollection();
+            View.authors.fetch();
+            View.collection.on('sync', function(collection, res, opts){
+                debug('Got PostCollection');
+                View.render();
             });
-            this.collection.on("add", function(post){
-                that.render();
+            View.collection.on('add', function(post){
+                debug('PostCollection add');
+                View.visiblePosts.push(post.get('id'));
+                post.get_content();
             });
-            this.collection.fetch();
-            this.render();
+            View.collection.fetch();
         },
 
         render: function(){
-            this.$el.empty();
-            var that = this;
-            _(this.collection.models).each(function(item){
-                var view = new PostView({model: item});
-                that.$el.append( view.render().el );
+            debug('rendering PostsView');
+            var View = this;
+            View.$el.empty();
+            _(View.collection.models).each(function(item){
+                if(View.visiblePosts.indexOf(item.get('id'))<0) return;//skip invisible posts
+                var post = new PostView({model: item});
+                debug('adding post '+item.get('id'));
+                View.$el.append( post.render().el );
             });
-            return this;
+            return View;
         }
     });
 
