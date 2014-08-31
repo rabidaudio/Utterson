@@ -2,7 +2,20 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
-@import 'base';
+/*Your syntax highlighting template*/
+@import '/bower_components/highlightjs/styles/github.css';
+
+code {
+    color: #38A600;
+}
+
+.title {
+    font-size: 20pt;
+}
+
+.post {
+    padding-bottom: 25px;
+}
 
 .browsehappy {
     margin: 0.2em 0;
