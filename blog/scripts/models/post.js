@@ -3,11 +3,13 @@
 define([
     'underscore',
     'backbone',
-    'jquery'
-], function (_, Backbone, $) {
+    'jquery',
+    'models/author',
+    'backbone-relational'
+], function (_, Backbone, $, AuthorModel) {
     'use strict';
 
-    var PostModel = Backbone.Model.extend({
+    var PostModel = Backbone.RelationalModel.extend({
 
         // initialize: function() {
         // },
@@ -39,6 +41,12 @@ define([
         }
     */
 
+        relations: [{
+            type: Backbone.HasOne,
+            key: 'author',
+            relatedModel: AuthorModel
+        }],
+
         get_content: function(){
             var that = this;
             $.ajax({
@@ -47,6 +55,11 @@ define([
                 that.set('markdown', data);
                 that.trigger('got_body', data);
             });
+        },
+
+        parse: function(data){
+            data.date = (new Date(data.date)).toLocaleString(); //convert timestamps to strings
+            return data;
         }
     });
 

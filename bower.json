@@ -10,7 +10,8 @@
     "modernizr": "~2.7.1",
     "handlebars": "~1.3.0",
     "marked": "~0.3.2",
-    "highlightjs": "~8.0.0"
+    "highlightjs": "~8.0.0",
+    "backbone-relational-amd": "~0.8.7"
   },
   "devDependencies": {}
 }

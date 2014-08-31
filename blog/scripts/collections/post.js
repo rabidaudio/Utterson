@@ -3,7 +3,7 @@
 define([
     'underscore',
     'backbone',
-    'models/post'
+    'models/post',
 ], function (_, Backbone, PostModel) {
     'use strict';
 

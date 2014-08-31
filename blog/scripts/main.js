@@ -7,17 +7,21 @@ require.config({
             deps: ['jquery'],
             exports: 'jquery'
         },
-        handlebars:{
+        handlebars: {
             exports: 'Handlebars'
         },
-        highlightjs:{
+        highlightjs: {
             exports: 'hljs'
+        },
+        'backbone-relational': {
+            deps: ['backbone']
         }
     },
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
+        'backbone-relational': '../bower_components/backbone-relational-amd/backbone-relational',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
         marked: '../bower_components/marked/lib/marked',
         highlightjs: '../bower_components/highlightjs/highlight.pack',
@@ -31,7 +35,8 @@ require([
     'backbone',
     'highlightjs',
     'marked',
-    'views/posts'
+    'views/posts',
+    'backbone-relational'
 ], function (Backbone, hljs, marked, PostsView) {
 
     /*

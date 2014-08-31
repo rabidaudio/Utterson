@@ -4,6 +4,19 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 /*Your syntax highlighting template*/
 @import '/bower_components/highlightjs/styles/github.css';
+/* https://highlightjs.org/static/test.html */
+
+
+
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+}
+
+.post .sub {
+    text-align: right;
+}
 
 code {
     color: #38A600;
@@ -16,6 +29,8 @@ code {
 .post {
     padding-bottom: 25px;
 }
+
+
 
 .browsehappy {
     margin: 0.2em 0;
