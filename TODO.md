@@ -1,6 +1,6 @@
 
 
-Get posts displaying correctly
+~Get posts displaying correctly
 
 get working routes for posts
 
