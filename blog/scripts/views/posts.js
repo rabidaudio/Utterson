@@ -11,7 +11,8 @@ define([
 
     /*
 
-        This is the main container view for posts
+        This is the main container view for posts. Simply a container for 
+        a post collection which renders directly to #posts
     */
     var PostsView = Backbone.View.extend({
 

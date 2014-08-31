@@ -27,8 +27,8 @@ define([
 
     var RouterRouter = Backbone.Router.extend({
         routes: {
-            "posts": "posts",
-            "posts/:title": "posts"
+            'posts': 'posts',
+            'posts/:title': 'posts'
             //"search/:query/p:page": "search"   // #search/kiwis/p7
         },
 

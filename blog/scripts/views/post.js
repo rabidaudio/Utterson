@@ -5,7 +5,6 @@ define([
     'underscore',
     'backbone',
     'marked',
-    // 'handlebars',
     'templates'
 ], function ($, _, Backbone, marked, Templates) {
     'use strict';
@@ -37,11 +36,6 @@ define([
         },
 
         bodyRender: marked.parse,
-
-        // template: function(x){ return x;},
-
-        // template: Handlebars.default.compile( $("#post-template").html() ),
-        // template: Handlebars.compile( $("#post-template").html() ),
 
         template: Templates['blog/scripts/templates/post.hbs'],
 

@@ -42,10 +42,10 @@ define([
         get_content: function(){
             var that = this;
             $.ajax({
-                url: this.get("source")
+                url: this.get('source')
             }).done(function(data, textStatus, jqXHR){
-                that.set("markdown", data);
-                that.trigger("got_body", data);
+                that.set('markdown', data);
+                that.trigger('got_body', data);
             });
         }
     });

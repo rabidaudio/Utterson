@@ -9,7 +9,7 @@ define([
 
     var PostCollection = Backbone.Collection.extend({
         model: PostModel,
-        url: "/data/posts_store.json"
+        url: '/data/posts_store.json'
     });
 
     return PostCollection;

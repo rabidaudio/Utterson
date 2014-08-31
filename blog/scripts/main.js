@@ -9,6 +9,9 @@ require.config({
         },
         handlebars:{
             exports: 'Handlebars'
+        },
+        highlightjs:{
+            exports: 'hljs'
         }
     },
     paths: {
@@ -17,7 +20,7 @@ require.config({
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
         marked: '../bower_components/marked/lib/marked',
-        highlightjs: '../bower_components/highlightjs-amd/highlight.pack',
+        highlightjs: '../bower_components/highlightjs/highlight.pack',
         //stupid fucking amd module puts stuff in Handlebars.default which fucks with everything
         // handlebars: '../bower_components/handlebars/handlebars.amd' 
         handlebars: '../bower_components/handlebars/handlebars'

@@ -22,3 +22,5 @@ The pulishing step is quite open, so changes can be deployed via `git` (e.g. to 
 
 The goal is to have a blog that looks good and just works using tools you already use,
 without a lot of configuration work, which will run anywhere.
+
+http://a.wki.pe/Utterson
