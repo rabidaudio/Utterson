@@ -7,10 +7,6 @@ body {
     width: 300px;
 }
 
-#templates {
-    display: none;
-}
-
 pre {
     background-color: lightgrey;
     padding: 1%;

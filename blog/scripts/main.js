@@ -6,6 +6,9 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        handlebars:{
+            exports: 'Handlebars'
         }
     },
     paths: {
@@ -15,7 +18,9 @@ require.config({
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
         marked: '../bower_components/marked/lib/marked',
         highlightjs: '../bower_components/highlightjs-amd/highlight.pack',
-        handlebars: '../bower_components/handlebars/handlebars.amd'
+        //stupid fucking amd module puts stuff in Handlebars.default which fucks with everything
+        // handlebars: '../bower_components/handlebars/handlebars.amd' 
+        handlebars: '../bower_components/handlebars/handlebars'
     }
 });
 
@@ -25,7 +30,6 @@ require([
     'marked',
     'views/posts'
 ], function (Backbone, hljs, marked, PostsView) {
-
 
     /*
     Make fancy shell script (probably node) which lets you "publish posts" (add to json index),

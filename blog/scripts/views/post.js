@@ -5,8 +5,9 @@ define([
     'underscore',
     'backbone',
     'marked',
-    'handlebars'
-], function ($, _, Backbone, marked, Handlebars) {
+    // 'handlebars',
+    'templates'
+], function ($, _, Backbone, marked, Templates) {
     'use strict';
 
     var PostView = Backbone.View.extend({
@@ -39,7 +40,10 @@ define([
 
         // template: function(x){ return x;},
 
-        template: Handlebars.default.compile( $("#post-template").html() ),
+        // template: Handlebars.default.compile( $("#post-template").html() ),
+        // template: Handlebars.compile( $("#post-template").html() ),
+
+        template: Templates['blog/scripts/templates/post.hbs'],
 
         remove: function(){
             $el.remove();
