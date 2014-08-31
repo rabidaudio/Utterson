@@ -41,8 +41,9 @@ require([
     'marked',
     'debug',
     'views/posts',
+    'collections/post',
     'backbone-relational'
-], function (Backbone, hljs, marked, debug, PostsView) {
+], function (Backbone, hljs, marked, debug, PostsView, PostCollection) {
 
     /*
     Make fancy shell script (probably node) which lets you "publish posts" (add to json index),
@@ -62,6 +63,10 @@ require([
     });
 
     Backbone.history.start();
-    var postsView = new PostsView();
     debug('App start');
+
+    var postsView = new PostsView({
+        collection: new PostCollection(),
+        el: $('#posts')
+    });
 });
