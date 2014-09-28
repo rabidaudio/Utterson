@@ -21,19 +21,36 @@
 
 define([
     'jquery',
-    'backbone'
-], function ($, Backbone) {
+    'backbone',
+    'views/posts',
+    'collections/post'
+], function ($, Backbone, PostsView, PostCollection) {
     'use strict';
 
     var RouterRouter = Backbone.Router.extend({
         routes: {
             'posts': 'posts',
-            'posts/:title': 'posts'
-            //"search/:query/p:page": "search"   // #search/kiwis/p7
+            'posts/:id': 'posts'
+            //"search/:query/:page": "search"   // #search/kiwis/7
         },
 
-        posts: function(title) {
+        posts: function(id) {
             //show matching posts
+            if(id == null){
+                //set collection to all
+                Utterson.all_posts = new PostCollection();
+                var postsView = new PostsView({
+                    collection: Utterson.all_posts,
+                    el: $('#posts')
+                });
+            }else{
+                if(!Utterson.all_posts) Utterson.all_posts = new PostCollection(); //initalize
+                var collection = new PostCollection( Utterson.all_posts.find({id: id}) );//limit to desired post
+                var postsView = new PostsView({
+                    collection: collection,
+                    el: $('#posts')
+                });
+            }
         }
 
     });

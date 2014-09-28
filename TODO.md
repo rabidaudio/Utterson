@@ -10,6 +10,8 @@ add static pages
 
 create config.json file and parser
 
+add post tagss
+
 create management script
     add posts
     way to handle images, videos, etc

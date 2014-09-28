@@ -28,7 +28,7 @@ require.config({
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
         marked: '../bower_components/marked/lib/marked',
         highlightjs: '../bower_components/highlightjs/highlight.pack',
-        //stupid fucking amd module puts stuff in Handlebars.default which fucks with everything
+        //stupid fucking amd module puts stuff in Handlebars.default which fucks with everything. using shim instead
         // handlebars: '../bower_components/handlebars/handlebars.amd' 
         handlebars: '../bower_components/handlebars/handlebars',
         debug: 'helper/debug'
@@ -40,10 +40,11 @@ require([
     'highlightjs',
     'marked',
     'debug',
+    'routes/router',
     'views/posts',
     'collections/post',
     'backbone-relational'
-], function (Backbone, hljs, marked, debug, PostsView, PostCollection) {
+], function (Backbone, hljs, marked, debug, Router, PostsView, PostCollection) {
 
     /*
     Make fancy shell script (probably node) which lets you "publish posts" (add to json index),
@@ -62,9 +63,14 @@ require([
       }
     });
 
+    var app_router = new Router();
+
+
     Backbone.history.start();
     debug('App start');
 
+
+    //TODO let router make PostsView
     var postsView = new PostsView({
         collection: new PostCollection(),
         el: $('#posts')
