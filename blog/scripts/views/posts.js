@@ -18,12 +18,22 @@ define([
     */
     var PostsView = Backbone.View.extend({
 
-        events: {},
+        events: {
+            // 'keypress #new-todo':       'createOnEnter',
+            // 'click #clear-completed':   'clearCompleted',
+            // 'click #toggle-all':        'toggleAllComplete'
+        },
 
         initialize: function(){
             debug('Building PostsView');
             var View = this;
             
+
+            //TODO switch to this.listenTo pattern:
+                //this.listenTo(Todos, 'filter', this.filterAll);
+                //this.listenTo(Todos, 'all', this.render);
+
+                
             View.collection.on('sync', function(collection, res, opts){
                 debug('Got PostCollection');
                 View.render();
